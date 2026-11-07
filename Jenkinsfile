@@ -1,5 +1,9 @@
-pipeline {
+ pipeline {
     agent any
+
+    environment {
+        MAVEN_OPTS = '-Dmaven.repo.local=.m2/repository'
+    }
 
     stages {
         stage('Checkout') {
@@ -9,12 +13,12 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'chmod +x mvnw && ./mvnw clean package -DskipTests'
+                sh 'chmod +x mvnw && ./mvnw -Dmaven.repo.local=$WORKSPACE/.m2/repository clean package -DskipTests'
             }
         }
         stage('Test') {
             steps {
-                sh './mvnw test'
+                sh './mvnw -Dmaven.repo.local=$WORKSPACE/.m2/repository test'
             }
         }
     }
