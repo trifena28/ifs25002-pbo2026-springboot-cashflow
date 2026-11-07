@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: ifs25002-pbo2026-springboot-cashflow
+  devtools:
+    restart:
+      enabled: true
+      poll-interval: 1s
+      quiet-period: 400ms
+    liveload:
+      enabled: true
+
+server:
+  port: ${APP_PORT:${PORT:8080}}
+  forward-headers-strategy: framework
+  compression:
+    enabled: true
+
+vaadin:
+  launch-browser: false
+  liveReload:
+    enabled: true
