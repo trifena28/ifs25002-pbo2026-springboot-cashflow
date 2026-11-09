@@ -1,4 +1,4 @@
- pipeline {
+pipeline {
 
     agent any
 
@@ -14,11 +14,6 @@
         JAVA_TOOL_OPTIONS = '-Dfile.encoding=UTF-8'
         // Cache Maven bersama di volume Jenkins, persist antar build/job (hindari 429)
         MAVEN_LOCAL_REPO = '/var/jenkins_home/.m2/repository'
-
-        URL_REDEPLOY = credentials('URL_REDEPLOY')
-        URL_PROGRESS = credentials('URL_PROGRESS')
-        WEBSITE_ID   = credentials('WEBSITE_ID')
-        DEPLOY_TOKEN = credentials('DEPLOY_TOKEN')
     }
 
     stages {
